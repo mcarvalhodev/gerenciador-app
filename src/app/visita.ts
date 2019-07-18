@@ -1,7 +1,7 @@
 export class Visita {
 
   id: number;
-  dataVisita: string;
+  dataVisita: number;
   idRepresentante: string;
   nomeCliente : string ;
   enderecoCliente : string;

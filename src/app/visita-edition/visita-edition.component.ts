@@ -11,6 +11,7 @@ import {Visita} from '../visita';
 export class VisitaEditionComponent implements OnInit {
 
   visita: Visita;
+  dataVisita: Date;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,7 +26,14 @@ export class VisitaEditionComponent implements OnInit {
   getVisita(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     if (id === 0) {
-      this.visita = {};
+      this.visita = {
+        id: null,
+        idRepresentante: null,
+        dataVisita: 0,
+        nomeCliente: null,
+        enderecoCliente: null,
+        valorDeslocamento: 0.0
+      };
       return;
     }
     this.visitaService.getVisita(id)
@@ -35,7 +43,7 @@ export class VisitaEditionComponent implements OnInit {
   }
 
   salvar() {
-    this.visita.dataVisita = new Date(this.visita.dataVisita.year, this.visita.dataVisita.month, this.visita.dataVisita.day);
+    this.visita.dataVisita = Date.now();
     this.visitaService.salvar(this.visita)
       .subscribe(data => {
         this.router.navigate(['visitas']);
