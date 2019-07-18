@@ -1,0 +1,30 @@
+<div class="container">
+  <a role="button" class="btn btn-outline-primary fa fa-user-plus" routerLink="/edition/{{0}}">
+  </a>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Data da Visita</th>
+      <th scope="col">Id Representante</th>
+      <th scope="col">Nome do Cliente</th>
+      <th scope="col">Endereco do Cliente</th>
+      <th scope="col">Valor Deslocamento</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let visita of visitas">
+      <td>
+        <button type="button" class="btn btn-outline-danger fa fa-trash-alt" (click)="delete(visita.id)"></button>
+        <a role="button" class="btn btn-outline-secondary fa fa-edit" routerLink="/edition/{{visita.id}}">
+        </a>
+      </td>
+      <td>{{ visita.dataVisita| date }}</td>
+      <td>{{ visita.idRepresentante }}</td>
+      <td>{{ visita.nomeCliente }}</td>
+      <td>{{ visita.enderecoCliente }}</td>
+      <td>{{ visita.valorDeslocamento | currency }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
